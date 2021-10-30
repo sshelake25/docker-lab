@@ -17,16 +17,16 @@ Push build images to hub/ https://hub.docker.com/
 
 5. Run conainer out of build image / from hub image
 
-docker run \
-    -it \
-    --rm \
-    -v ${PWD}:/app \
-    -v /app/node_modules \
-    -p 3001:3000 \
-    -e CHOKIDAR_USEPOLLING=true \
-   sshelake25/demo-lab:sample
 
+
+-------------------------------------------
+docker build -t sshelake25/demo-lab:react-app-demo .
 --------------------------------------------
+docker run -d -it  -p 3200:80/tcp --name react-app sshelake25/react-app:latest
+--------------------------------------------
+docker run -d -it  -p 3200:80/tcp --name react-app sshelake25/demo-lab:react-app-demo
+--------------------------------------------
+
 
 
 npm init react-app sample --use-npm
