@@ -1,5 +1,38 @@
 # Getting Started with Create React App
 
+1. Build Images outof our sample react app from docker file
+locaimage
+docker build -t sample:dev .
+
+2.you want to add this image to registory /
+//your name/repo name
+docker build -t sshelake25/demo-lab:sample .
+
+3.You need to login to hub.docker.com  // login deatils
+
+Push build images to hub/ https://hub.docker.com/
+
+4. docker push sshelake25/demo-lab:sample
+
+
+5. Run conainer out of build image / from hub image
+
+docker run \
+    -it \
+    --rm \
+    -v ${PWD}:/app \
+    -v /app/node_modules \
+    -p 3001:3000 \
+    -e CHOKIDAR_USEPOLLING=true \
+   sshelake25/demo-lab:sample
+
+--------------------------------------------
+
+
+npm init react-app sample --use-npm
+
+npm run build
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
