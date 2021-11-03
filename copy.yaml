@@ -1,0 +1,27 @@
+---
+- hosts: webserver
+  tasks:
+    - name: Copying files to the managed hosts
+      copy:
+        src: ./file.txt
+        dest: /tmp
+        force: yes
+    - name: Add line in file.
+      blockinfile:
+        path: /tmp/file.txt
+        block: |
+          I am adding this new block
+          This is a new block to show the test
+          This is the third line in this block
+        state: present
+
+- hosts: webserver
+  tasks:
+    - name: Creating a file
+      file:
+        path: /tmp/mylab.txt
+        mode: 0644 #read write excute
+        owner: ltadmin
+        group: ltadmin
+        state: touch
+        #state: directory
